@@ -1,3 +1,4 @@
+syntax on
 :set number
 :set relativenumber
 :set autoindent
@@ -7,10 +8,11 @@
 :set softtabstop=4
 :set mouse=a
 
+
 call plug#begin()
 
-" GUI enhancements
-"Plug 'swalladge/antarctic-vim'
+Plug 'ryanoasis/vim-devicons'
+
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
@@ -27,7 +29,7 @@ Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
 Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
-Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
+Plug 'https://github.com/tc50cal/vim-terminal'  " Vim Terminal
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 
@@ -35,7 +37,7 @@ Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple c
 
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
-"Plug 'ryanoasis/nerd-fonts'
+Plug 'ryanoasis/nerd-fonts'
 
 
 "Language support
@@ -56,6 +58,7 @@ nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
 nmap <F8> :TagbarToggle<CR>
 
 :set completeopt-=preview " For No Previews
+set encoding=UTF-8
 
 :colorscheme jellybeans
 :colorscheme catppuccin-mocha " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
@@ -70,7 +73,7 @@ let g:NERDTreeDirArrowCollapsible="~"
 " :CocInstall coc-clangd
 " :CocInstall coc-snippets
 " :CocCommand snippets.edit... FOR EACH FILE TYPE
-
+let g:coc_global_extensions = ['coc-tsserver',"coc-rust-analyzer","coc-deno"]
 " air-line
 
 let g:airline_powerline_fonts = 1
@@ -90,3 +93,7 @@ let g:airline_symbols.linenr = ''  "''
 " GUI enhancements
 
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
