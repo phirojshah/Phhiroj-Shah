@@ -7,18 +7,10 @@ syntax on
 :set smarttab
 :set softtabstop=4
 :set mouse=a
-
+set background=dark
 
 call plug#begin()
 
-Plug 'ryanoasis/vim-devicons'
-
-Plug 'itchyny/lightline.vim'
-Plug 'machakann/vim-highlightedyank'
-Plug 'andymass/vim-matchup'
-
-
-Plug  'https://github.com/nvim-neotest/neotest'
 
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
@@ -34,11 +26,7 @@ Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 
 
-
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-
-Plug 'ryanoasis/nerd-fonts'
-
+ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 "Language support
 Plug 'SirVer/ultisnips'
@@ -49,6 +37,15 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jparise/vim-graphql'        " GraphQL syntax
 
 call plug#end()
+
+"...
+set termguicolors     " enable true colors support
+let ayucolor="light"  " for light version of theme
+let ayucolor="mirage" " for mirage version of theme
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
+
+
 
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -61,17 +58,12 @@ nmap <F8> :TagbarToggle<CR>
 set encoding=UTF-8
 
 :colorscheme jellybeans
-:colorscheme catppuccin-mocha " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+:colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 
-" --- Just Some Notes ---
-" :PlugClean :PlugInstall :UpdateRemotePlugins
-"
-" :CocInstall coc-python
-" :CocInstall coc-clangd
-" :CocInstall coc-snippets
+
 " :CocCommand snippets.edit... FOR EACH FILE TYPE
 let g:coc_global_extensions = ['coc-tsserver',"coc-rust-analyzer","coc-deno"]
 " air-line
